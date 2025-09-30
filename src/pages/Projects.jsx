@@ -25,10 +25,19 @@ const projects = [
     title: "Portfolio Website",
     description:
       "My personal portfolio showcasing my projects, skills, and background. Built with React, TailwindCSS, and Framer Motion.",
-    image: "/projects/portfolio.png",
+    image: "/projects/Portfolio.png",
     tech: ["React", "TailwindCSS", "Framer Motion"],
     demo: "https://portfolio2-rose-phi-44.vercel.app/",
     github: "https://github.com/Raytay1234/Portfolio2",
+  },
+  {
+    title: "Pricing plan component",
+    description:
+      "A responsive pricing plan component with toggleable monthly/annual billing built using React and TailwindCSS.",
+    image: "/projects/Pricing plan.png",
+    tech: ["React", "TailwindCSS"],
+    demo: "https://pricingplan-dees.vercel.app/",
+    github: "https://github.com/Raytay1234/Pricingplan",
   },
 
 ];
