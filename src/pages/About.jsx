@@ -1,78 +1,118 @@
 import React from "react";
+import { motion as Motion } from "framer-motion";
 
 const skills = [
   "React", "TailwindCSS", "JavaScript", "TypeScript",
-  "Node.js", "Express", "MongoDB", "Firebase",
-  "Git & GitHub", "REST APIs", "Figma", "Vite"
+  "Node.js", "Express", "Git & GitHub", "REST APIs", "Figma", "Vite"
 ];
 
 const education = [
   {
-    school: "Kitengela International Schools",
+    school: "Kitengella International School",
     degree: "High School Diploma",
-    period: "2018 – 2022",
+    period: "2018 – 2022"
   },
+  {
+    school: "Inceptor Institute of Technology",
+    degree: "Diploma in Web and Software Development",
+    period: "2025 – Present"
+  }
 ];
+
+// Animation Variants
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
 
 const About = () => {
   return (
-    <section className="py-20 bg-gray-100 dark:bg-gray-800 min-h-screen">
+    <section id="about" className="py-20 ...">
+  {/* about content */}
+    <section className="py-20 bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 min-h-screen">
       <div className="max-w-5xl mx-auto px-6">
         {/* Intro */}
-        <div className="text-center mb-12">
-          <img
-            src="/profile.jpg" // place your photo inside /public
+        <Motion.div
+          className="text-center mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <Motion.img
+            src="/profile.jpg" // add your photo to /public
             alt="Profile"
-            className="w-32 h-32 mx-auto rounded-full shadow-lg mb-6"
+            className="w-36 h-36 mx-auto rounded-full shadow-lg mb-6 border-4 border-blue-600 object-cover"
+            whileHover={{ scale: 1.05 }}
           />
-          <h2 className="text-3xl font-bold mb-4">About Me</h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-            Hi, I’m Ryan — a passionate frontend developer who loves turning ideas into 
-            interactive and visually appealing web experiences. I specialize in building 
-            responsive, user-friendly interfaces with React, TailwindCSS, and modern JavaScript. 
-            My goal is to create products that not only look good but also provide seamless usability.
+          <h2 className="text-4xl font-bold mb-4">About Me</h2>
+          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Hi, I’m <span className="font-semibold text-blue-600 dark:text-blue-400">Ryan</span> — 
+            a passionate frontend developer who loves turning ideas into interactive and visually appealing web experiences.  
+            I specialize in building responsive, user-friendly interfaces with React, TailwindCSS, and modern JavaScript.  
+            My mission is to craft products that not only look good but also provide seamless usability.
           </p>
-          <a
+          <Motion.a
             href="/Resume.pdf"
             download
-            className="mt-6 inline-block px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-500 transition"
+            className="mt-8 inline-block px-8 py-3 bg-blue-600 text-white font-medium rounded-lg shadow hover:bg-blue-500 transition"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             Download Resume
-          </a>
-        </div>
+          </Motion.a>
+        </Motion.div>
 
         {/* Skills */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-semibold mb-6 text-center">Skills & Tools</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-center">
+        <Motion.div
+          className="mb-20"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <h3 className="text-2xl font-semibold mb-8 text-center">
+            Skills & Tools
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3">
             {skills.map((skill, i) => (
-              <div
+              <Motion.span
                 key={i}
-                className="bg-white dark:bg-gray-700 p-4 rounded-lg shadow hover:shadow-md transition"
+                className="px-5 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-full shadow hover:shadow-md transition text-sm font-medium"
+                whileHover={{ scale: 1.08 }}
               >
                 {skill}
-              </div>
+              </Motion.span>
             ))}
           </div>
-        </div>
+        </Motion.div>
 
         {/* Education */}
-        <div>
-          <h3 className="text-2xl font-semibold mb-6 text-center">Education</h3>
-          <div className="space-y-6">
+        <Motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <h3 className="text-2xl font-semibold mb-8 text-center">Education</h3>
+          <div className="relative border-l-4 border-blue-600 dark:border-blue-500 pl-6 space-y-8">
             {education.map((edu, i) => (
-              <div
+              <Motion.div
                 key={i}
-                className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow hover:shadow-md transition"
+                className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow hover:shadow-md transition relative"
+                whileHover={{ scale: 1.02 }}
               >
+                {/* Timeline dot */}
+                <span className="absolute -left-3 top-6 w-6 h-6 bg-blue-600 dark:bg-blue-500 rounded-full border-4 border-white dark:border-gray-800"></span>
                 <h4 className="text-xl font-bold">{edu.degree}</h4>
-                <p className="text-blue-600 dark:text-blue-400">{edu.school}</p>
+                <p className="text-blue-600 dark:text-blue-400 font-medium">{edu.school}</p>
                 <p className="text-sm text-gray-500 dark:text-gray-400">{edu.period}</p>
-              </div>
+              </Motion.div>
             ))}
           </div>
-        </div>
+        </Motion.div>
       </div>
+    </section>
     </section>
   );
 };
