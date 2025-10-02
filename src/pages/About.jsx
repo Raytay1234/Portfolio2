@@ -8,9 +8,24 @@ const skills = [
 
 const education = [
   {
+    school: "Epren Academy",
+    degree: "Primary Education",
+    period: "2009 – 2015"
+  },
+  {
+    school: "kauti Primary School",
+    degree: "Primary Education",
+    period: " 2015-2018"
+  },
+  {
     school: "Kitengella International School",
     degree: "High School Diploma",
     period: "2018 – 2022"
+  },
+  {
+    school: "Interior Institute of Technology",
+    degree: "Certificate in Full Stack Web Development",
+    period: "2024 – 2025"
   },
   {
     school: "Inceptor Institute of Technology",
@@ -27,35 +42,42 @@ const fadeUp = {
 
 const About = () => {
   return (
-    <section id="about" className="py-20 ...">
-  {/* about content */}
-    <section className="py-20 bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 min-h-screen">
+    <section
+      id="about"
+      className="py-24 bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 min-h-screen"
+    >
       <div className="max-w-5xl mx-auto px-6">
         {/* Intro */}
         <Motion.div
-          className="text-center mb-16"
+          className="text-center mb-20"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
         >
           <Motion.img
-            src="/profile.jpg" // add your photo to /public
+            src="/profile.jpg" // add your photo in /public
             alt="Profile"
             className="w-36 h-36 mx-auto rounded-full shadow-lg mb-6 border-4 border-blue-600 object-cover"
             whileHover={{ scale: 1.05 }}
           />
-          <h2 className="text-4xl font-bold mb-4">About Me</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">About Me</h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Hi, I’m <span className="font-semibold text-blue-600 dark:text-blue-400">Ryan</span> — 
-            a passionate frontend developer who loves turning ideas into interactive and visually appealing web experiences.  
-            I specialize in building responsive, user-friendly interfaces with React, TailwindCSS, and modern JavaScript.  
-            My mission is to craft products that not only look good but also provide seamless usability.
+            Hi, I’m{" "}
+            <span className="font-semibold text-blue-600 dark:text-blue-400">
+              Ryan
+            </span>{" "}
+            — a passionate frontend developer who loves turning ideas into
+            interactive and visually appealing web experiences.
+            <br />
+            I specialize in building responsive, user-friendly interfaces with
+            React, TailwindCSS, and modern JavaScript. My mission is to craft
+            products that not only look good but also provide seamless usability.
           </p>
           <Motion.a
             href="/Resume.pdf"
             download
-            className="mt-8 inline-block px-8 py-3 bg-blue-600 text-white font-medium rounded-lg shadow hover:bg-blue-500 transition"
+            className="mt-10 inline-block px-8 py-3 bg-blue-600 text-white font-medium rounded-lg shadow-lg hover:bg-blue-500 transition-all duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -65,7 +87,7 @@ const About = () => {
 
         {/* Skills */}
         <Motion.div
-          className="mb-20"
+          className="mb-24"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -78,7 +100,7 @@ const About = () => {
             {skills.map((skill, i) => (
               <Motion.span
                 key={i}
-                className="px-5 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-full shadow hover:shadow-md transition text-sm font-medium"
+                className="px-5 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-full shadow-sm hover:shadow-md transition text-sm font-medium"
                 whileHover={{ scale: 1.08 }}
               >
                 {skill}
@@ -87,7 +109,7 @@ const About = () => {
           </div>
         </Motion.div>
 
-        {/* Education */}
+        {/* Education Timeline */}
         <Motion.div
           initial="hidden"
           whileInView="visible"
@@ -95,24 +117,27 @@ const About = () => {
           variants={fadeUp}
         >
           <h3 className="text-2xl font-semibold mb-8 text-center">Education</h3>
-          <div className="relative border-l-4 border-blue-600 dark:border-blue-500 pl-6 space-y-8">
+          <div className="relative border-l-4 border-blue-600 dark:border-blue-500 pl-6 space-y-10">
             {education.map((edu, i) => (
               <Motion.div
                 key={i}
-                className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow hover:shadow-md transition relative"
+                className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition relative"
                 whileHover={{ scale: 1.02 }}
               >
                 {/* Timeline dot */}
                 <span className="absolute -left-3 top-6 w-6 h-6 bg-blue-600 dark:bg-blue-500 rounded-full border-4 border-white dark:border-gray-800"></span>
-                <h4 className="text-xl font-bold">{edu.degree}</h4>
-                <p className="text-blue-600 dark:text-blue-400 font-medium">{edu.school}</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">{edu.period}</p>
+                <h4 className="text-xl font-bold mb-1">{edu.degree}</h4>
+                <p className="text-blue-600 dark:text-blue-400 font-medium">
+                  {edu.school}
+                </p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  {edu.period}
+                </p>
               </Motion.div>
             ))}
           </div>
         </Motion.div>
       </div>
-    </section>
     </section>
   );
 };

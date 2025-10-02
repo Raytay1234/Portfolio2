@@ -1,64 +1,159 @@
-import React from "react";
-import { Mail, Github, Linkedin, Twitter } from "lucide-react"; // using lucide-react icons
+import React, { useState } from "react";
+import { Mail, Github, Linkedin, Instagram } from "lucide-react";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) {
+      alert("Please fill in all fields.");
+      return;
+    }
+    console.log("Form submitted:", formData);
+    setSubmitted(true);
+    setFormData({ name: "", email: "", message: "" });
+  };
+
   return (
-    <section id="contact" className="py-20 ...">
-      {/* contact content */}
+    <section
+      id="contact"
+      className="py-28 bg-gradient-to-b from-gray-900 to-black text-white relative overflow-hidden"
+    >
+      <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
+        {/* Header */}
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+          Let’s Work Together
+        </h2>
+        <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+          Whether you’re looking to build something new, collaborate on an idea,
+          or just say hi — I’d love to hear from you. Let’s create something
+          amazing.
+        </p>
 
+        {/* Contact Form */}
+        <div className="max-w-3xl mx-auto bg-gray-800 p-10 rounded-2xl shadow-lg border border-gray-700">
+          <form onSubmit={handleSubmit} className="space-y-6 text-left">
+            <div>
+              <label className="block text-gray-300 mb-2">Name</label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your full name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              />
+            </div>
 
-      <section className="py-20 bg-gray-900 text-white min-h-screen">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          {/* Header */}
-          <h2 className="text-4xl font-bold mb-6">Contact Me</h2>
-          <p className="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
-            I’m always open to discussing new projects, creative ideas, or
-            opportunities to be part of your vision. Let’s connect!
-          </p>
+            <div>
+              <label className="block text-gray-300 mb-2">Email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              />
+            </div>
 
-          {/* Email CTA */}
+            <div>
+              <label className="block text-gray-300 mb-2">Message</label>
+              <textarea
+                name="message"
+                rows="6"
+                placeholder="How can I help you?"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200"
+            >
+              Send Message
+            </button>
+
+            {submitted && (
+              <p className="text-green-500 text-center mt-4">
+                Thanks for reaching out! I’ll respond soon.
+              </p>
+            )}
+          </form>
+        </div>
+
+        {/* Contact Options */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto mb-16 mt-16">
+          {/* Email Card */}
           <a
-            href="mailto:your@email"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 rounded-lg hover:bg-blue-500 transition text-lg font-medium"
+            href="mailto:ryanmugi2004@gmail.com"
+            className="group flex flex-col items-center gap-4 px-8 py-10 bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-700 hover:border-blue-500 hover:bg-gray-700"
           >
-            <Mail className="w-5 h-5" />
-            Send Email
+            <Mail className="w-8 h-8 text-blue-500 group-hover:scale-110 transition-transform duration-300" />
+            <h3 className="text-xl font-semibold">Email Me</h3>
+            <p className="text-gray-400">ryanmugi2004@gmail.com</p>
           </a>
 
-          {/* Social Links */}
-          <div className="mt-12 flex justify-center gap-6">
-            <a
-              href="https://github.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-4 bg-gray-800 rounded-full hover:bg-gray-700 transition"
-            >
-              <Github className="w-6 h-6" />
-            </a>
-            <a
-              href="https://linkedin.com/in/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-4 bg-gray-800 rounded-full hover:bg-gray-700 transition"
-            >
-              <Linkedin className="w-6 h-6" />
-            </a>
-            <a
-              href="https://twitter.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-4 bg-gray-800 rounded-full hover:bg-gray-700 transition"
-            >
-              <Twitter className="w-6 h-6" />
-            </a>
+          {/* Socials Card */}
+          <div className="flex flex-col items-center gap-4 px-8 py-10 bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-700">
+            <h3 className="text-xl font-semibold mb-2">Find Me Online</h3>
+            <div className="flex gap-6">
+              <a
+                href="https://github.com/Raytay1234"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 bg-gray-900 rounded-full hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg"
+              >
+                <Github className="w-6 h-6" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ryan-mugi-6b836a37a"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 bg-gray-900 rounded-full hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg"
+              >
+                <Linkedin className="w-6 h-6" />
+              </a>
+              <a
+                href="https://www.instagram.com/ryguydev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 bg-gray-900 rounded-full hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg"
+              >
+                <Instagram className="w-6 h-6" />
+              </a>
+            </div>
           </div>
-
-          {/* Footer note */}
-          <p className="mt-10 text-sm text-gray-500">
-            Or drop me a message directly on social media!
-          </p>
         </div>
-      </section>
+
+        {/* Footer Note */}
+        <p className="mt-12 text-sm text-gray-500">
+          Prefer a quick chat? Reach out via{" "}
+          <span className="text-blue-400">LinkedIn</span> or{" "}
+          <span className="text-blue-400">Instagram</span> — I’ll get back ASAP.
+        </p>
+      </div>
+
+      {/* Background Glow Effect */}
+      <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-blue-600 opacity-20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2 z-0"></div>
     </section>
   );
 };
