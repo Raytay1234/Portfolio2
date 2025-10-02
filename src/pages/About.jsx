@@ -23,7 +23,7 @@ const education = [
     period: "2018 – 2022"
   },
   {
-    school: "Interior Institute of Technology",
+    school: "Inceptor Institute of Technology",
     degree: "Certificate in Full Stack Web Development",
     period: "2024 – 2025"
   },
