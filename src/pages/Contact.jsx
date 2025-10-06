@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Mail, Github, Linkedin, Instagram } from "lucide-react";
+import emailjs from "@emailjs/browser"; // ✅ use this
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,12 @@ const Contact = () => {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  // ✅ Correct environment variable usage
+  const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -18,14 +25,29 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
+    const { name, email, message } = formData;
+
+    if (!name || !email || !message) {
       alert("Please fill in all fields.");
       return;
     }
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
+
+    setLoading(true);
+
+    emailjs
+      .send(serviceID, templateID, formData, publicKey)
+      .then(() => {
+        setSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setSubmitted(false), 5000); // ✅ auto-hide message
+      })
+      .catch((error) => {
+        console.error("EmailJS Error:", error);
+        alert("Something went wrong. Please try again later.");
+      })
+      .finally(() => setLoading(false));
   };
+
 
   return (
     <section
@@ -87,9 +109,14 @@ const Contact = () => {
 
             <button
               type="submit"
-              className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200"
+              disabled={loading}
+              className={`w-full py-3 font-semibold rounded-lg transition-all duration-200 ${
+                loading
+                  ? "bg-gray-600 cursor-not-allowed"
+                  : "bg-blue-600 hover:bg-blue-700 text-white"
+              }`}
             >
-              Send Message
+              {loading ? "Sending..." : "Send Message"}
             </button>
 
             {submitted && (
@@ -104,7 +131,7 @@ const Contact = () => {
         <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto mb-16 mt-16">
           {/* Email Card */}
           <a
-            href="mailto:ryanmugi2004@gmail.com"
+            href="mailto:ryanmugi2004@gmail.com?subject=Let's%20Work%20Together&body=Hi%20Ryan%2C%0A%0AI'd%20love%20to%20connect%20about..."
             className="group flex flex-col items-center gap-4 px-8 py-10 bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-700 hover:border-blue-500 hover:bg-gray-700"
           >
             <Mail className="w-8 h-8 text-blue-500 group-hover:scale-110 transition-transform duration-300" />
@@ -152,7 +179,7 @@ const Contact = () => {
         </p>
       </div>
 
-      {/* Background Glow Effect */}
+      {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-blue-600 opacity-20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2 z-0"></div>
     </section>
   );
