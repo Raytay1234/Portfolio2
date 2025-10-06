@@ -129,15 +129,7 @@ const Contact = () => {
 
         {/* Contact Options */}
         <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto mb-16 mt-16">
-          {/* Email Card */}
-          <a
-            href="mailto:ryanmugi2004@gmail.com?subject=Let's%20Work%20Together&body=Hi%20Ryan%2C%0A%0AI'd%20love%20to%20connect%20about..."
-            className="group flex flex-col items-center gap-4 px-8 py-10 bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-700 hover:border-blue-500 hover:bg-gray-700"
-          >
-            <Mail className="w-8 h-8 text-blue-500 group-hover:scale-110 transition-transform duration-300" />
-            <h3 className="text-xl font-semibold">Email Me</h3>
-            <p className="text-gray-400">ryanmugi2004@gmail.com</p>
-          </a>
+          
 
           {/* Socials Card */}
           <div className="flex flex-col items-center gap-4 px-8 py-10 bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-700">
