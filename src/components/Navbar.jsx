@@ -5,10 +5,9 @@ const Navbar = () => {
   const location = useLocation();
 
   const linkClasses = (path) =>
-    `relative transition-colors duration-300 ${
-      location.pathname === path
-        ? "text-blue-300"
-        : "text-white hover:text-blue-300"
+    `relative transition-colors duration-300 ${location.pathname === path
+      ? "text-blue-300"
+      : "text-white hover:text-blue-300"
     }`;
 
   return (
@@ -37,6 +36,9 @@ const Navbar = () => {
           </Link>
           <Link to="/projects" className={linkClasses("/projects")}>
             Projects
+          </Link>
+          <Link to="/skills" className={linkClasses("/skills")}>
+            Skills
           </Link>
           <Link to="/contact" className={linkClasses("/contact")}>
             Contact

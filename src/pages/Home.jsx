@@ -226,11 +226,22 @@ const Home = () => {
               </Motion.div>
             ))}
           </div>
+
+          {/* 🔗 Button to go to full Skills page */}
+          <Motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigate("/skills")}
+            className="mt-14 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:opacity-90 transition"
+          >
+            See More Skills →
+          </Motion.button>
         </div>
 
         {/* Animated gradient behind skills */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-100/20 to-purple-100/20 dark:from-blue-900/10 dark:to-purple-900/10 blur-2xl"></div>
       </section>
+
 
       {/* 🚀 FINAL CTA */}
       <section className="py-24 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center relative overflow-hidden">
