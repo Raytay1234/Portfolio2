@@ -78,7 +78,7 @@ const About = () => {
             className="w-36 h-36 mx-auto rounded-full shadow-lg mb-6 border-4 border-blue-600 object-cover"
             whileHover={{ scale: 1.05 }}
           />
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">About Me</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">About Me</h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Hi, I’m{" "}
             <span className="font-semibold text-blue-600 dark:text-blue-400">
@@ -107,7 +107,7 @@ const About = () => {
           viewport={{ once: true }}
           variants={fadeUp}
         >
-          <h3 className="text-2xl font-semibold mb-8 text-center">Experience</h3>
+          <h3 className="text-2xl font-semibold mb-8 text-center text-white">Experience</h3>
           <div className="space-y-8">
             {experience.map((exp, i) => (
               <Motion.div
@@ -135,7 +135,7 @@ const About = () => {
           viewport={{ once: true }}
           variants={fadeUp}
         >
-          <h3 className="text-2xl font-semibold mb-8 text-center">
+          <h3 className="text-2xl font-semibold mb-8 text-center text-white">
             Skills & Tools
           </h3>
           <div className="flex flex-wrap justify-center gap-3">
@@ -159,7 +159,7 @@ const About = () => {
           viewport={{ once: true }}
           variants={fadeUp}
         >
-          <h3 className="text-2xl font-semibold mb-8 text-center">Education</h3>
+          <h3 className="text-2xl font-semibold mb-8 text-center text-white">Education</h3>
           <div className="relative border-l-4 border-blue-600 dark:border-blue-500 pl-6 space-y-10">
             {education.map((edu, i) => (
               <Motion.div
@@ -187,7 +187,7 @@ const About = () => {
           viewport={{ once: true }}
           variants={fadeUp}
         >
-          <h3 className="text-2xl font-semibold mb-10 text-center">What Drives Me</h3>
+          <h3 className="text-2xl font-semibold mb-10 text-center text-white">What Drives Me</h3>
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {interests.map((item, i) => (
               <Motion.div
