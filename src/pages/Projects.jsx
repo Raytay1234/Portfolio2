@@ -1,12 +1,12 @@
 import React from "react";
 import { motion as Motion } from "framer-motion";
+import { Github, ExternalLink } from "lucide-react";
 
-// ✅ Project data
 const projects = [
   {
     title: "E-Commerce Store",
     description:
-      "A full-stack online store with product listings, shopping cart, and checkout built using React, Node.js, and MongoDB.",
+      "A full-stack online store with product listings, shopping cart, and secure checkout. Designed with a focus on smooth user experience and performance.",
     image: "/projects/ecommerce.png",
     tech: ["React", "Node.js", "MongoDB", "Express"],
     demo: "https://electro-shop-azure.vercel.app/",
@@ -15,7 +15,7 @@ const projects = [
   {
     title: "Dashboard Analytics",
     description:
-      "An interactive admin dashboard with data visualization, user management, and authentication features.",
+      "A responsive admin dashboard for monitoring metrics and managing users. Includes real-time charts, Firebase authentication, and custom theme support.",
     image: "/projects/Dashboard.png",
     tech: ["React", "Recharts", "Firebase"],
     demo: "https://dashboard-theta-mauve.vercel.app/",
@@ -24,7 +24,7 @@ const projects = [
   {
     title: "Portfolio Website",
     description:
-      "My personal portfolio showcasing my projects, skills, and background. Built with React, TailwindCSS, and Framer Motion.",
+      "My personal portfolio showcasing projects, education, and skills. Built with React, TailwindCSS, and Framer Motion for smooth animations and performance.",
     image: "/projects/Portfolio.png",
     tech: ["React", "TailwindCSS", "Framer Motion"],
     demo: "https://portfolio2-rose-phi-44.vercel.app/",
@@ -33,7 +33,7 @@ const projects = [
   {
     title: "Pricing Plan Component",
     description:
-      "A responsive pricing plan component with toggleable monthly/annual billing built using React and TailwindCSS.",
+      "A modern pricing section with toggleable monthly/annual plans. Fully responsive and accessible UI built using React and TailwindCSS.",
     image: "/projects/Pricing plan.png",
     tech: ["React", "TailwindCSS"],
     demo: "https://pricingplan-dees.vercel.app/",
@@ -42,7 +42,7 @@ const projects = [
   {
     title: "Joke Generator",
     description:
-      "A web app that fetches and displays random jokes from an API, built with React and Axios.",
+      "A fun, lightweight app that fetches random jokes from a public API using Axios. Features responsive design and clean, minimalist UI.",
     image: "/projects/Joke generator.png",
     tech: ["React", "Axios"],
     demo: "https://joke-gen-phi.vercel.app/",
@@ -51,7 +51,7 @@ const projects = [
   {
     title: "Quiz App",
     description:
-      "A multiple-choice quiz application with score tracking and timer functionality, built using React.",
+      "An interactive quiz platform with timed questions, score tracking, and instant feedback. Built entirely with React.",
     image: "/projects/Quiz app.png",
     tech: ["React"],
     demo: "https://quiz-game-nine-nu.vercel.app/",
@@ -59,65 +59,70 @@ const projects = [
   },
 ];
 
-// ✅ Animation variants
+// Animation variants
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  hidden: { opacity: 1, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.2 } },
 };
 
 const Projects = () => {
   return (
-    <main className="pt-24 pb-24 bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <section
+      id="projects"
+      className="py-28 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 min-h-screen"
+    >
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <Motion.div
-          className="text-center mb-16"
+          className="text-center mb-20"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-            My Projects
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 dark:text-white">
+            Featured Projects
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            A selection of projects I’ve built recently, showcasing my skills in
-            frontend and full-stack development.
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            A collection of projects that highlight my technical abilities and
+            design sensibility — from full-stack web apps to polished front-end
+            components.
           </p>
         </Motion.div>
 
-        {/* Project Grid */}
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Projects Grid */}
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => (
             <Motion.div
               key={i}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl transition-all duration-300"
+              className="group bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-gray-200 dark:border-gray-700"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeUp}
-              whileHover={{ y: -5 }}
             >
               {/* Image */}
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block overflow-hidden"
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-300"
-                />
-              </a>
+              <div className="relative overflow-hidden">
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-52 object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  />
+                </a>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
 
               {/* Content */}
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-white">
+                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
+                <p className="text-gray-600 dark:text-gray-300 mb-5 leading-relaxed flex-grow">
                   {project.description}
                 </p>
 
@@ -126,30 +131,32 @@ const Projects = () => {
                   {project.tech.map((tech, idx) => (
                     <span
                       key={idx}
-                      className="bg-blue-100 dark:bg-blue-700/40 text-blue-700 dark:text-blue-200 text-xs px-3 py-1 rounded-full font-medium"
+                      className="bg-blue-100 dark:bg-blue-800/40 text-blue-700 dark:text-blue-300 text-xs px-3 py-1 rounded-full font-medium"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                {/* Links */}
+                {/* Action Buttons */}
                 <div className="flex gap-4 mt-auto">
                   <a
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 text-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition font-medium"
+                    className="flex items-center justify-center gap-2 flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition font-medium"
                   >
+                    <ExternalLink className="w-4 h-4" />
                     Live Demo
                   </a>
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 text-center px-4 py-2 border-2 border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400 rounded-lg hover:bg-blue-600 hover:text-white transition font-medium"
+                    className="flex items-center justify-center gap-2 flex-1 px-4 py-2 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-300 rounded-lg hover:bg-blue-600 hover:text-white transition font-medium"
                   >
-                    GitHub
+                    <Github className="w-4 h-4" />
+                    Code
                   </a>
                 </div>
               </div>
@@ -157,7 +164,7 @@ const Projects = () => {
           ))}
         </div>
       </div>
-    </main>
+    </section>
   );
 };
 
