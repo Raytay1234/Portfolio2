@@ -25,7 +25,7 @@ const projects = [
     title: "Portfolio Website",
     description:
       "My personal portfolio showcasing projects, education, and skills. Built with React, TailwindCSS, and Framer Motion for smooth animations and performance.",
-    image: "/projects/Portfolio.png",
+    image: "/projects/portfolio2.png",
     tech: ["React", "TailwindCSS", "Framer Motion"],
     demo: "https://portfolio2-rose-phi-44.vercel.app/",
     github: "https://github.com/Raytay1234/Portfolio2",

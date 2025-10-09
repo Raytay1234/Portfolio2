@@ -30,7 +30,7 @@ const featuredProjects = [
   {
     title: "Portfolio Website",
     description: "Personal portfolio built with React & TailwindCSS.",
-    image: "/projects/Portfolio.png",
+    image: "/projects/portfolio2.png",
     link: "/projects",
   },
 ];
