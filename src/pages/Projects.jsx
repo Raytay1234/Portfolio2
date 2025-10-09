@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion as Motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
+
 const projects = [
   {
     title: "E-Commerce Store",
@@ -67,13 +68,24 @@ const projects = [
   },
 ];
 
-// Animation variants
 const fadeUp = {
-  hidden: { opacity: 1, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.2 } },
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
 const Projects = () => {
+  // ✅ Pagination Logic
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 6;
+  const totalPages = Math.ceil(projects.length / projectsPerPage);
+
+  const indexOfLast = currentPage * projectsPerPage;
+  const indexOfFirst = indexOfLast - projectsPerPage;
+  const currentProjects = projects.slice(indexOfFirst, indexOfLast);
+
+  const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
+
   return (
     <section
       id="projects"
@@ -100,7 +112,7 @@ const Projects = () => {
 
         {/* Projects Grid */}
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, i) => (
+          {currentProjects.map((project, i) => (
             <Motion.div
               key={i}
               className="group bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-gray-200 dark:border-gray-700"
@@ -111,11 +123,7 @@ const Projects = () => {
             >
               {/* Image */}
               <div className="relative overflow-hidden">
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={project.demo} target="_blank" rel="noopener noreferrer">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -170,6 +178,35 @@ const Projects = () => {
               </div>
             </Motion.div>
           ))}
+        </div>
+
+        {/* Pagination Controls */}
+        <div className="flex justify-center items-center gap-6 mt-16">
+          <button
+            onClick={prevPage}
+            disabled={currentPage === 1}
+            className={`px-6 py-2 rounded-lg font-medium transition ${
+              currentPage === 1
+                ? "bg-gray-300 dark:bg-gray-700 text-gray-500 cursor-not-allowed"
+                : "bg-blue-600 text-white hover:bg-blue-500"
+            }`}
+          >
+            Previous
+          </button>
+          <span className="text-gray-700 dark:text-gray-300 font-semibold">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={nextPage}
+            disabled={currentPage === totalPages}
+            className={`px-6 py-2 rounded-lg font-medium transition ${
+              currentPage === totalPages
+                ? "bg-gray-300 dark:bg-gray-700 text-gray-500 cursor-not-allowed"
+                : "bg-blue-600 text-white hover:bg-blue-500"
+            }`}
+          >
+            Next
+          </button>
         </div>
       </div>
     </section>
