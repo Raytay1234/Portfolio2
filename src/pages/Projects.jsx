@@ -1,7 +1,6 @@
 import React from "react";
 import { motion as Motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
-
 const projects = [
   {
     title: "E-Commerce Store",
@@ -56,6 +55,15 @@ const projects = [
     tech: ["React"],
     demo: "https://quiz-game-nine-nu.vercel.app/",
     github: "https://github.com/Raytay1234/Quiz-game",
+  },
+  {
+    title: "LogIn/SignUp form",
+    description:
+      "A sleek login and signup form with client-side validation and responsive design. Built using React and TailwindCSS.",
+    image: "/projects/forms.png",
+    tech: ["React", "TailwindCSS"],
+    demo: "https://forms-mauve-sigma.vercel.app/",
+    github: "https://github.com/Raytay1234/Forms",
   },
 ];
 
