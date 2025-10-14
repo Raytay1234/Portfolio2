@@ -66,6 +66,16 @@ const projects = [
     demo: "https://forms-mauve-sigma.vercel.app/",
     github: "https://github.com/Raytay1234/Forms",
   },
+  {
+    title: "Performance test app",
+    description:
+      "A simple app to test and compare the performance of different JavaScript functions. Built with React.",
+    image: "/projects/performance.png",
+    tech: ["React"],
+    demo: "https://working-perfomance-test.vercel.app/",
+
+    github: "https://github.com/Raytay1234/working-perfomance-test",
+  }
 ];
 
 const fadeUp = {
