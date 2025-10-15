@@ -75,6 +75,15 @@ const projects = [
     demo: "https://working-perfomance-test.vercel.app/",
 
     github: "https://github.com/Raytay1234/working-perfomance-test",
+  },
+  {
+    title: "Real -time trade",
+    description:
+      "A real-time stock trading simulator with live price updates and portfolio management. Built using React and WebSockets.",
+    image: "/projects/trade.png",
+    tech: ["React", "WebSockets"],
+    demo: "https://real-time-trading.vercel.app/",
+    github: "https://github.com/Raytay1234/Real-time-trading-",
   }
 ];
 
