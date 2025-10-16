@@ -84,6 +84,15 @@ const projects = [
     tech: ["React", "WebSockets"],
     demo: "https://real-time-trading.vercel.app/",
     github: "https://github.com/Raytay1234/Real-time-trading-",
+  },
+  {
+    title: "Weather App",
+    description:
+      "A weather forecasting app that fetches data from a public API. Features location search, current conditions, and a 5-day forecast.",
+    image: "/projects/weather.png",
+    tech: ["React", "API"],
+    demo: "https://weather-dun-nu.vercel.app/",
+    github: "https://github.com/Raytay1234/weather",
   }
 ];
 
