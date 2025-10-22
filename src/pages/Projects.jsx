@@ -93,7 +93,15 @@ const projects = [
     tech: ["React", "API"],
     demo: "https://weather-dun-nu.vercel.app/",
     github: "https://github.com/Raytay1234/weather",
-  }
+  },
+{    title: "IMDb clone",
+    description:
+      "A movie database app that allows users to search for movies, view details, and read reviews. Built with React and The Movie Database API.",
+    image: "/projects/OMDb.png",
+    tech: ["React", "API"],
+    demo: "https://om-db-nine.vercel.app/",
+    github: "https://github.com/Raytay1234/OMDb",
+}
 ];
 
 const fadeUp = {
