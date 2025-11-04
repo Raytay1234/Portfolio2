@@ -94,14 +94,15 @@ const projects = [
     demo: "https://weather-dun-nu.vercel.app/",
     github: "https://github.com/Raytay1234/weather",
   },
-{    title: "IMDb clone",
-    description:
-      "A movie database app that allows users to search for movies, view details, and read reviews. Built with React and The Movie Database API.",
-    image: "/projects/OMDb.png",
-    tech: ["React", "API"],
-    demo: "https://om-db-nine.vercel.app/",
-    github: "https://github.com/Raytay1234/OMDb",
-}
+
+  {
+    title: "Movie App",
+    description: "A movie previewing app that fetches data from a public API. Features past and current movies and series.",
+    image: "/projects/MovieVault.png",
+    tech: ["React", "Api"],
+    demo: "https://movie-search-app-nine-gilt.vercel.app/",
+    github: "https://github.com/Raytay1234/Movie-search-app",
+  }
 ];
 
 const fadeUp = {
@@ -221,11 +222,10 @@ const Projects = () => {
           <button
             onClick={prevPage}
             disabled={currentPage === 1}
-            className={`px-6 py-2 rounded-lg font-medium transition ${
-              currentPage === 1
+            className={`px-6 py-2 rounded-lg font-medium transition ${currentPage === 1
                 ? "bg-gray-300 dark:bg-gray-700 text-gray-500 cursor-not-allowed"
                 : "bg-blue-600 text-white hover:bg-blue-500"
-            }`}
+              }`}
           >
             Previous
           </button>
@@ -235,11 +235,10 @@ const Projects = () => {
           <button
             onClick={nextPage}
             disabled={currentPage === totalPages}
-            className={`px-6 py-2 rounded-lg font-medium transition ${
-              currentPage === totalPages
+            className={`px-6 py-2 rounded-lg font-medium transition ${currentPage === totalPages
                 ? "bg-gray-300 dark:bg-gray-700 text-gray-500 cursor-not-allowed"
                 : "bg-blue-600 text-white hover:bg-blue-500"
-            }`}
+              }`}
           >
             Next
           </button>
